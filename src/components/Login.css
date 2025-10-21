@@ -1,0 +1,174 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.login-card {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-header {
+  margin-bottom: 2.5rem;
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.75rem 0;
+}
+
+.login-header p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.error-text {
+  color: #dc2626 !important;
+  font-weight: 600;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.setup-instructions {
+  text-align: left;
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
+.setup-instructions h3 {
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+}
+
+.setup-instructions ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.setup-instructions li {
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.setup-instructions code {
+  background: #e5e7eb;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #1f2937;
+  font-family: 'Courier New', monospace;
+}
+
+.login-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-login-btn {
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.3s;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.google-login-btn:hover:not(:disabled) {
+  background: #357ae8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.google-login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.help-section {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.help-section details {
+  background: #f3f4f6;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.help-section summary {
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  user-select: none;
+}
+
+.help-content {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.help-content p {
+  margin: 0 0 0.75rem 0;
+  color: #4b5563;
+  font-size: 0.875rem;
+}
+
+.help-content ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.help-content li {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .login-card {
+    padding: 2rem;
+  }
+
+  .login-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-header p {
+    font-size: 0.875rem;
+  }
+}

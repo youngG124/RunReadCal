@@ -1,0 +1,201 @@
+.calendar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.calendar {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calendar-header h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.monthly-total {
+  font-size: 1rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.total-km {
+  color: #3b82f6;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.nav-button {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.days-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.day-name {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calendar-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-cell {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.2s;
+  background: #f9fafb;
+  padding: 0.5rem;
+}
+
+.calendar-cell:hover {
+  background: #f3f4f6;
+}
+
+.calendar-cell.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.calendar-cell.disabled:hover {
+  background: #f9fafb;
+}
+
+.calendar-cell.today {
+  background: #dbeafe;
+  font-weight: 600;
+}
+
+.calendar-cell.today:hover {
+  background: #bfdbfe;
+}
+
+.calendar-cell.has-km {
+  background: #ecfdf5;
+  border: 2px solid #10b981;
+}
+
+.calendar-cell.has-km:hover {
+  background: #d1fae5;
+}
+
+.date-number {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.km-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.km-display {
+  font-size: 0.875rem;
+  color: #059669;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.km-display:hover {
+  background: rgba(16, 185, 129, 0.2);
+  transform: scale(1.05);
+}
+
+.km-input {
+  width: 60px;
+  padding: 0.25rem;
+  border: 2px solid #3b82f6;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.km-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+@media (max-width: 768px) {
+  .calendar {
+    padding: 1rem;
+  }
+
+  .calendar-cell {
+    min-height: 80px;
+  }
+
+  .calendar-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .monthly-total {
+    font-size: 0.875rem;
+  }
+}
