@@ -3,10 +3,6 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Accept build arguments
-ARG VITE_GOOGLE_CLIENT_ID
-ENV VITE_GOOGLE_CLIENT_ID=$VITE_GOOGLE_CLIENT_ID
-
 # Copy package files
 COPY package*.json ./
 

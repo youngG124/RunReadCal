@@ -44,6 +44,13 @@
   font-size: 1.125rem;
 }
 
+.sync-status {
+  font-size: 0.75rem;
+  color: #059669;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
 .nav-button {
   background: #f3f4f6;
   border: none;

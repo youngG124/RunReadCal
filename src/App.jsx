@@ -26,7 +26,7 @@ function App() {
         <div className="header-content">
           <div>
             <h1>Daily Run Tracker</h1>
-            <p>Document and track your daily kilometers</p>
+            <p>Plan and track your daily kilometers</p>
           </div>
           <div className="user-section">
             <img src={user.picture} alt={user.name} className="user-avatar" />

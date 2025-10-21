@@ -7,7 +7,8 @@
       "Bash(then cat .env)",
       "Bash(else echo \".env file not found\")",
       "Bash(fi)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(docker build:*)"
     ],
     "deny": [],
     "ask": []

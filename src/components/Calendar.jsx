@@ -12,14 +12,53 @@ import {
   isSameDay,
   isToday
 } from 'date-fns'
+import { useAuth } from '../context/AuthContext'
+import GoogleDriveService from '../services/googleDrive'
 import './Calendar.css'
 
 function Calendar() {
+  const { user } = useAuth()
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [kilometers, setKilometers] = useState({})
   const [editingDate, setEditingDate] = useState(null)
   const [inputValue, setInputValue] = useState('')
+  const [isSyncing, setIsSyncing] = useState(false)
+  const [lastSyncTime, setLastSyncTime] = useState(null)
+
+  // Load data from Google Drive on mount
+  useEffect(() => {
+    if (user?.token) {
+      loadFromDrive()
+    }
+  }, [user])
+
+  const loadFromDrive = async () => {
+    try {
+      setIsSyncing(true)
+      const driveService = new GoogleDriveService(user.token)
+      const data = await driveService.loadData()
+      setKilometers(data)
+      setLastSyncTime(new Date())
+    } catch (error) {
+      console.error('Failed to load from Drive:', error)
+    } finally {
+      setIsSyncing(false)
+    }
+  }
+
+  const saveToDrive = async (newKilometers) => {
+    try {
+      setIsSyncing(true)
+      const driveService = new GoogleDriveService(user.token)
+      await driveService.saveData(newKilometers)
+      setLastSyncTime(new Date())
+    } catch (error) {
+      console.error('Failed to save to Drive:', error)
+    } finally {
+      setIsSyncing(false)
+    }
+  }
 
   // Calculate monthly total
   const getMonthlyTotal = () => {
@@ -47,19 +86,29 @@ function Calendar() {
     const dateStr = format(date, 'yyyy-MM-dd')
     const value = parseFloat(inputValue)
 
+    let newKilometers
+
     if (!isNaN(value) && value >= 0) {
-      setKilometers(prev => ({
-        ...prev,
+      newKilometers = {
+        ...kilometers,
         [dateStr]: value
-      }))
+      }
     } else if (inputValue === '') {
-      const newKm = { ...kilometers }
-      delete newKm[dateStr]
-      setKilometers(newKm)
+      newKilometers = { ...kilometers }
+      delete newKilometers[dateStr]
+    } else {
+      // Invalid input, don't save
+      setEditingDate(null)
+      setInputValue('')
+      return
     }
 
+    setKilometers(newKilometers)
     setEditingDate(null)
     setInputValue('')
+
+    // Auto-save to Google Drive
+    saveToDrive(newKilometers)
   }
 
   const renderHeader = () => {
@@ -78,6 +127,14 @@ function Calendar() {
           <div className="monthly-total">
             Total: <span className="total-km">{monthlyTotal.toFixed(1)} km</span>
           </div>
+          {isSyncing && (
+            <div className="sync-status">Syncing...</div>
+          )}
+          {lastSyncTime && !isSyncing && (
+            <div className="sync-status">
+              Last synced: {format(lastSyncTime, 'HH:mm:ss')}
+            </div>
+          )}
         </div>
         <button
           className="nav-button"
